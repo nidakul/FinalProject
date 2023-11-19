@@ -1,6 +1,7 @@
 ﻿using System;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -8,12 +9,16 @@ namespace DataAccess.Concrete.EntityFramework
 	{
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = localhost; Database = Northwind; User Id = SA; Password = rentacardb;; TrustServerCertificate=true"); 
+            optionsBuilder.UseSqlServer("Server = localhost; Database = Northwind; User Id = SA; Password = rentacardb; TrustServerCertificate=true");
+
         }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
     }
 }
+
 
